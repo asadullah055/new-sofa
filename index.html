@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sofa and Chair</title>
+
+    <!-- bootstrap link  -->
+
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    /> -->
+    <!-- bootstrap icon link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- css link  -->
+    <link rel="stylesheet" href="src/checkout.css" />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <!-- navigation start -->
+
+    <header class="header">
+      <nav id="nav">
+        <div class="brand">
+          <a href="index.html"> E-shop</a>
+        </div>
+        <div class="box">
+          <div id="overlay"></div>
+          <div id="main-menu" class="main-menu">
+            <div class="side-menu-header">
+              <h2>E-shop</h2>
+              <button id="closeBtn" class="closeBtn">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+            <ul class="navbar-nav">
+              <li class="item">
+                <a href="index.html" class="link active">Home</a>
+              </li>
+              <li class="item">
+                <a href="product.html" class="link">Product</a>
+              </li>
+              <li class="item">
+                <a href="offer.html" class="link">Offer</a>
+              </li>
+              <li class="item">
+                <a href="about.html" class="link">About us</a>
+              </li>
+              <li class="item">
+                <a href="contact.html" class="link">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="icon">
+            <button id="btn" class="btn">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <!-- <a href="checkout.html"> -->
+            <div id="cart" class="cart">
+              <i class="bi bi-cart-check"></i>
+              <div class="cartAmount" id="itemAmount">00</div>
+            </div>
+            <!-- </a> -->
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- navigation end -->
+    <!-- =====products====== -->
+    <br /><br /><br />
+    <section class="product-section">
+      <div class="products">
+        <div id="products-wrapper" class="products-wrapper"></div>
+      </div>
+    </section>
+    <!-- =====products====== -->
+    <!-- ====== sidebar ===== -->
+    <div id="overlay" class=""></div>
+    <div id="sidebar" class="sidebar">
+      <div class="side-wrapper">
+        <div class="topper">
+          <div class="sidebar-title">
+            <div class="s-title">
+              <i class="bi bi-bag-check"></i>
+              <h4>Shopping cart</h4>
+            </div>
+            <div id="close-btn" class="close-btn">
+              <i class="bi bi-x-lg"></i>
+              <span>Close</span>
+            </div>
+          </div>
+        </div>
+        <!-- ======== cart items ==== -->
+        <div id="shopping-cart" class="shopping-cart"></div>
+        <!-- ===== calculate ==== -->
+        <div class="process-wrapper">
+          <div class="process-to">
+            <a href="checkout.html">
+              <div>Proceed To Checkout</div>
+              <div class="process-amount">
+                $<span id="process-amount"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!-- <a href="checkout.html"> -->
+    <div id="side-box" class="side-box">
+      <div class="bag">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <p><span id="cart-items">0</span> items</p>
+      </div>
+      <h3>$ <span id="cart-items-sum">00</span></h3>
+    </div>
+    <!-- </a> -->
+    <!-- ============footer area start======== -->
+
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-top-wrapper">
+          <p>
+            <i class="fa-solid fa-truck-fast"></i> Free Shipping From $500.00
+          </p>
+          <p>
+            <i class="fa-solid fa-phone-volume"></i> Support 24/7 At Anytime
+          </p>
+          <p>
+            <i class="fa-regular fa-credit-card"></i> Support 24/7 At Anytime
+          </p>
+
+          <p><i class="fa-solid fa-gift"></i> Latest Offer Upto 30% Off</p>
+        </div>
+      </div>
+      <hr class="hr" />
+      <!-- ==== footer top end==== -->
+      <!-- ==== main footer start=== -->
+      <div class="main-footer">
+        <div class="footer-details">
+          <div class="mw-50 w-25">
+            <h5 class="title">Our shop</h5>
+            <ul class="f-ul">
+              <li class="f-list"><a class="f-link" href="#">About Us</a></li>
+              <li class="f-list"><a class="f-link" href="#">Contact Us</a></li>
+              <li class="f-list"><a class="f-link" href="#">FAQ</a></li>
+              <li class="f-list"><a class="f-link" href="#">Our Offer</a></li>
+            </ul>
+          </div>
+          <div class="mw-50 w-25">
+            <h5 class="title">Top Sales Category</h5>
+            <ul class="f-ul">
+              <li class="f-list"><a class="f-link" href="#">About Us</a></li>
+              <li class="f-list"><a class="f-link" href="#">Contact Us</a></li>
+              <li class="f-list"><a class="f-link" href="#">FAQ</a></li>
+              <li class="f-list"><a class="f-link" href="#">Our Offer</a></li>
+            </ul>
+          </div>
+
+          <div class="mw-50 w-25">
+            <h5 class="title">My Account</h5>
+            <ul class="f-ul">
+              <li class="f-list"><a class="f-link" href="#">About Us</a></li>
+              <li class="f-list"><a class="f-link" href="#">Contact Us</a></li>
+              <li class="f-list"><a class="f-link" href="#">FAQ</a></li>
+              <li class="f-list"><a class="f-link" href="#">Our Offer</a></li>
+            </ul>
+          </div>
+          <div class="mw-50 w-25">
+            <h5 class="title">Our Location</h5>
+            <ul class="f-ul location">
+              <li class="f-list">04/5 Block- B, Dhanmondi, Dhaka</li>
+              <li class="f-list">Tell: +88 127 8784</li>
+
+              <li class="f-list">Email: example@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ==== main footer start=== -->
+      <hr class="hr" />
+    </footer>
+
+    <script src="src/Data.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>
