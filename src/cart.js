@@ -109,17 +109,3 @@ upazila2.addEventListener("change", function (e) {
       union2.innerHTML += `<option id=${union.id} value=${union.name}>${union.name}</option>`;
     });
 });
-
-// expressDelivery.addEventListener("click", function () {
-//   if (expressDelivery.checked) {
-//     sCost.innerHTML = 30;
-//   }
-// });
-// regularDelivery.addEventListener("click", function () {
-//   if (regularDelivery.checked) {
-//     sCost.innerHTML = 20;
-//   }
-// });
-
-// totalCost.innerHTML = sCost.innerHTML;
-// console.log(sCost.innerHTML);

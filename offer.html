@@ -6,14 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sofa and Chair</title>
 
-    <!-- bootstrap link  -->
-
-    <!-- <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    /> -->
     <!-- bootstrap icon link  -->
     <link
       rel="stylesheet"
@@ -27,6 +19,7 @@
       referrerpolicy="no-referrer"
     />
     <!-- css link  -->
+
     <link rel="stylesheet" href="src/checkout.css" />
     <link rel="stylesheet" href="src/style.css" />
   </head>
@@ -70,36 +63,19 @@
             <button id="btn" class="btn">
               <i class="fa-solid fa-bars"></i>
             </button>
-            <!-- <a href="checkout.html"> -->
+
             <div id="cart" class="cart">
               <i class="bi bi-cart-check"></i>
               <div class="cartAmount" id="itemAmount">00</div>
             </div>
-            <!-- </a> -->
           </div>
         </div>
       </nav>
     </header>
 
     <!-- navigation end -->
-    <!-- =====products====== -->
-    <br /><br /><br />
-    <section class="product-section">
-      <div class="products">
-        <div id="products-wrapper" class="products-wrapper"></div>
-        <div id="overlay"></div>
-
-        <div id="popup-open" class="popup p-10">
-          <button id="popup-close" class="popup-close">
-            <i class="bi bi-x-lg"></i>
-          </button>
-          <div id="popup-contant" class="popup-contant p-10"></div>
-        </div>
-      </div>
-    </section>
-    <!-- =====products====== -->
     <!-- ====== sidebar ===== -->
-    <div id="overlay"></div>
+    <div id="overlay" class=""></div>
     <div id="sidebar" class="sidebar">
       <div class="side-wrapper">
         <div class="topper">
@@ -129,18 +105,11 @@
         </div>
       </div>
     </div>
-    <!-- </div> -->
-    <!-- <a href="checkout.html"> -->
-    <div id="side-box" class="side-box">
-      <div class="bag">
-        <i class="fa-solid fa-basket-shopping"></i>
-        <p><span id="cart-items">0</span> items</p>
-      </div>
-      <h3>$ <span id="cart-items-sum">00</span></h3>
-    </div>
-    <!-- </a> -->
-    <!-- ============footer area start======== -->
+    <!-- ============checkout area start======== -->
 
+    <!-- ============checkout area end======== -->
+    <!-- ============footer area start======== -->
+    <br /><br /><br /><br />
     <footer class="footer">
       <div class="footer-top">
         <div class="footer-top-wrapper">
@@ -204,7 +173,6 @@
       <!-- ==== main footer start=== -->
       <hr class="hr" />
     </footer>
-
     <script src="src/Data.js"></script>
     <script src="src/main.js"></script>
   </body>

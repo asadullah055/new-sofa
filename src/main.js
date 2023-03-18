@@ -16,6 +16,11 @@ const expressDelivery = document.getElementById("express-d");
 const regularDelivery = document.getElementById("regular-d");
 const totalCost = document.getElementById("total-cost");
 const sCost = document.getElementById("s-cost");
+const popupOpen = document.getElementById("popup-open");
+const popupContant = document.getElementById("popup-contant");
+const popupClose = document.getElementById("popup-close");
+const discount = document.getElementById("discount");
+
 // =========add function ==========
 const add = () => {
   document.body.classList.add("open");
@@ -59,6 +64,7 @@ closeMenu.addEventListener("click", menuClose);
 overlay.addEventListener("click", menuClose);
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
+
 let generateShop = () => {
   if (shop) {
     shop.innerHTML = sofaData
@@ -66,35 +72,68 @@ let generateShop = () => {
         let { name, price, img, id } = x;
         let search = basket.find((x) => x.id === id) || [];
         return `
-    <div id='card-${id}' class="card">
-    <img height="200" class="card-img p-5" src=${img} alt="" />
-    <div class="cart-body p-10">
-      <p class="card-title p-5">${name}</p>
-      <div class="d-flex card-price-button">
-        <h3>$${price}</h3>
-        <div class="bg-green increase-decrease-button">
-        <i onclick="decrement('${id}')" class="fa-solid text-white fa-minus"></i>
-        <div id=${id} class="quantity text-white">
-        ${search.item === undefined ? 0 : search.item}
-       
-      </div>
-        <i onclick="increment('${id}')" class="fa-solid text-white fa-plus"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-    `;
+            <div id='card-${id}' class="card">
+            <img onclick="popup('${id}')" height="200" class="card-img p-5" src=${img} alt="" />
+            <div class="cart-body p-10">
+              <p class="card-title p-5">${name}</p>
+              <div class="d-flex card-price-button">
+                <h3>$${price}</h3>
+                <div class="bg-green increase-decrease-button">
+                <i onclick="decrement('${id}')" class="fa-solid text-white fa-minus"></i>
+                <div id=${id} class="quantity text-white">
+                ${search.item === undefined ? 0 : search.item}
+              
+              </div>
+                <i onclick="increment('${id}')" class="fa-solid text-white fa-plus"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+            `;
       })
       .join("");
   }
 };
+popupClose?.addEventListener("click", function () {
+  popupOpen.style.display = "none";
+  close();
+});
+let popup = (id) => {
+  popupOpen.style.display = "block";
+  add();
+  let data = sofaData.find((y) => y.id === id);
+
+  let { img, name, price, categories, desc, discountPrice } = data;
+  popupContant.innerHTML = `
+  <img class="p-5 w-50"  height="350" src=${img} alt="" />
+  <div class="description p-10">
+    <h2 class="d-title">${name}</h2>
+    <p class="stock"><span>In stock</span></p>
+    <p class="dec"> ${desc}</p>
+    <h3 class="price-dis">$${price} <span>$${discountPrice}</span></h3>
+    
+      <button onclick="increment('${id}')" class="add-to-cart">Add to cart</button>
+   
+     <h4 class="categories-name p-5">Categories: <span>${categories}</span></h4>
+  </div>
+   `;
+};
+
+overlay.addEventListener("click", () => {
+  if (popupOpen) {
+    popupOpen.style.display = "none";
+  }
+  close();
+});
 generateShop();
 let shoppingItems = () => {
   return basket
     .map((x) => {
       let { id, item } = x;
       let search = sofaData.find((y) => y.id === id) || [];
+
       let { name, price, img } = search;
+
       return `  
       <div class="cart-items">
       <img width="100" height="100" src=${img} alt="" />
@@ -171,7 +210,7 @@ let decrement = (id) => {
   }
   update(selectItem);
   totalAmount();
-
+  totalShippingCost();
   summary();
   basket = basket.filter((x) => x.item !== 0);
   removeItem();
@@ -196,15 +235,16 @@ let removeItem = (id) => {
   basket = basket.filter((x) => x.id !== selectedItem);
   generate();
   summary();
+  generateShop();
   calculate();
   totalAmount();
+  totalShippingCost();
   localStorage.setItem("data", JSON.stringify(basket));
 };
 let totalAmount = () => {
   let amount = basket
     .map((x) => {
       let search = sofaData.find((a) => a.id === x.id) || [];
-      // console.log(search);
       return x.item * search.price;
     })
     .reduce((a, b) => a + b, 0);
@@ -215,7 +255,12 @@ let totalAmount = () => {
   if (subtotal) {
     subtotal.innerHTML = amount;
   }
-  // totalShippingCost();
+  if (totalCost) {
+    totalCost.innerHTML =
+      parseInt(subtotal.innerHTML) +
+      parseInt(sCost.innerHTML) -
+      parseInt(discount.innerHTML);
+  }
   return amount;
 };
 let totalShippingCost = () => {
@@ -223,7 +268,7 @@ let totalShippingCost = () => {
     expressDelivery.addEventListener("click", function () {
       if (expressDelivery.checked) {
         sCost.innerHTML = 30;
-        totalCost.innerHTML = 30 + totalAmount();
+        totalCost.innerHTML = 30 + totalAmount() - parseInt(discount.innerHTML);
       }
     });
   }
@@ -231,15 +276,11 @@ let totalShippingCost = () => {
     regularDelivery.addEventListener("click", function () {
       if (regularDelivery.checked) {
         sCost.innerHTML = 20;
-        totalCost.innerHTML = 20 + totalAmount();
+        totalCost.innerHTML = 20 + totalAmount() - parseInt(discount.innerHTML);
       }
     });
   }
 };
-if (totalCost) {
-  totalCost.innerHTML = totalAmount();
-}
-
 totalShippingCost();
 calculate();
 totalAmount();
